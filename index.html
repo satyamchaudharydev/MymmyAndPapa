@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        @font-face {
+        font-family: "fredoka";
+        src: url("./fredoka.ttf");
+        }
+        @font-face {
+        font-family: "naughtyMonster";
+        src: url("./naughtyMonster.ttf");
+        }
+        body,.app{
+            margin: 0;
+            overflow: hidden;
+            font-family: 'naughtyMonster';
+            /* flex-direction: row; */
+            display: grid;
+            grid-auto-flow: column ;
+
+        }
+        section{
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            padding: 60px;
+            background-size: cover;
+            background-position: 50%;
+            background-repeat: no-repeat;
+    }
+        .section-1{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url("/1.png");
+        
+        }
+        .section-2{
+            background-image: url("/2.png");
+        }
+        .section-3{
+            background-image: url("/3.png");
+        }
+        .section-4{
+            background-image: url("/4.png");
+        }
+        .section-5{
+            background-image: url("/5.png");
+        }
+         .fade{
+                animation: fade 1s ease;
+            }
+            @keyframes fade {
+                0%{
+                    opacity: 0;
+                }
+                100%{
+                    opacity: 1;
+                }
+                }
+        h1{
+            margin: 0;
+        }
+        img{
+            /* responsive imag */
+            max-width: 100%;
+            height: auto;
+        }
+        .cloud-bottom{
+            position: absolute;
+            bottom: 57px;
+            left: 0px;
+            width: 379px;
+            height: 191px;
+        }
+        
+        .cloud-top{
+            position: absolute;
+            top: 57px;
+            right: 0px;
+            width: 379px;
+            height: 191px;
+        }
+        .cloud-top-left{
+            position: absolute;
+            top: 27px;
+            width: 379px;
+            height: 191px;
+            left: -12%;
+            filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+        }
+        .cloud-bottom-right{
+            position: absolute;
+            bottom: 27px;
+            width: 479px;
+            height: 161px;
+            right: -4%;
+            filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+        }
+        .cloud-top-right{
+            position: absolute;
+            top: 27px;
+            width: 479px;
+            height: 141px;
+            right: -4%;
+            filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+        }
+        .cloud-1{
+            
+            width: 379px;
+            height: 191px;
+            /* object-fit: cover; */
+        }
+        .cloud-mini{
+            width: 240px;
+            /* height: 100px; */
+        }
+        .cloud-2{
+            width: 300px;
+            height: 151px;
+        }
+        .about-section{
+            text-align: center;
+            font-size: 150px;
+            line-height: 131px;
+            letter-spacing: 4px;
+            font-size: 80px;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 50px;
+        }
+        .highlight{
+            color: #F9D557;
+            text-shadow: 0px 8px 0px #EB7260;
+        }
+        .welcome-character{
+            position: fixed;
+            bottom:0px;
+            z-index: 100;
+            right: 30px;               
+            
+        }
+        .welcome-character--img{
+            display: block;
+            object-fit: cover;
+            width: fit-content;
+            height: fit-content;
+        }
+        .welcome-character--img img{
+            height: 30vh;            
+        }
+        .welcome-character--img img{
+            object-fit: contain;
+            
+        }
+        .sun{
+            width: 300px;
+            height: 300px;
+            margin-top: 50px;
+        }
+        .chat-section{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 200px;
+            height: 150px;
+            background-image: url("/callout.png");
+            background-size:contain ;
+        }
+        .chat-section h3{
+            color: #2B323C;
+            font-weight: 500;
+            font-size: 20.2325px;
+            line-height: 120%;
+            margin-top: 5px;
+            font-family: 'fredoka', sans-serif;
+        }
+        .page-title{
+            width: fit-content;
+            margin-inline: auto;
+            display: flex;
+            margin-top: 0;
+            align-items: center;
+            /* line-height: 0; */
+            font-size: 80px;
+            font-family: 'naughtyMonster';
+            font-weight: 400;
+            font-feature-settings: 'liga' off;
+            margin-top: 0px;
+            margin-bottom: 28px;
+            color: #2B323C;
+            text-align: center;
+
+
+        }
+        .about-content{
+            width: fit-content;
+            display: flex;
+            background: #44949D;
+            border: 4px solid #000000;
+            box-shadow: 0px 10px 0px #000000;
+            border-radius: 24px;
+            padding: 56px;
+            margin-top: 46px;
+
+        }
+        .about-content-text{
+            font-family: 'Fredoka';
+            font-style: normal;
+            font-weight: 500;
+            line-height: 120%;
+            /* or 56px */
+
+            font-feature-settings: 'liga' off;
+
+            color: #FFFFFF;
+        }
+        .me{
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+        .me-crown{
+            position: absolute;
+            top: -20px;
+            left: 0;
+            width: 38px;
+            height: 100%;
+            object-fit: cover;
+        }
+        .me-body{
+            object-fit: contain;
+            height: 381.7px;
+
+        }
+        .inverted{
+            margin-inline: left;
+
+            color: #fff;
+        }
+        .hobby-content{
+            background: #83D0FF;
+            border: 4px solid #000000;
+            box-shadow: 0px 10px 0px #000000;
+            border-radius: 24px;
+            width: 42ch;
+            padding: 30px 46px 86px 46px;
+            font-family: 'fredoka';
+            font-style: normal;
+            font-weight: 400;
+            line-height: 120%;
+            margin-top: 72px;
+            /* or 56px */
+
+            text-align: center;
+            font-feature-settings: 'liga' off;
+
+            color: #121212;
+        }
+        
+        .title-left{
+            text-align: left;
+            margin-inline: 0px ;
+        }
+        .my-school-content{
+            max-width: 55ch;
+            margin-top: 82px;
+            background: #FFFFFF;
+            border: 4px solid #000000;
+            box-shadow: 0px 10px 0px #000000;
+            border-radius: 24px;
+            font-family: 'fredoka';
+            font-style: normal;
+            font-weight: 400;
+            padding: 30px 46px 86px 46px;
+
+            line-height: 120%;
+            /* or 56px */
+
+            font-feature-settings: 'liga' off;
+
+            color: #2B323C;
+
+        }
+        .family-photo-section{
+            position: relative;
+            display: flex;
+            height: 200px;
+            bottom: 60px;
+            left: 50px;
+        }
+        .family-photo-section > img{
+            border: 6px solid #2B323C;
+            border-radius: 50%;
+        }
+              
+        .family-photo-section > img:nth-child(2){
+            position: relative;
+            object-fit: contain;
+            left: -30px;
+        }   
+        .family-photo-section > img:nth-child(3){
+            position: relative;
+            object-fit: contain;
+            left: -60px;
+        }   
+        .family-photo-section > img:nth-child(4){
+            position: relative;
+            object-fit: contain;
+            left: -90px;
+        }        
+        .subject-section{
+
+            width: fit-content;
+            display: grid;
+            
+            grid-template-columns: repeat(2, auto);
+            gap: 20px;
+            position: relative;
+            bottom: 40px;
+            left: 51px;
+        }
+        .subject-section > div{
+            text-align: center;
+            padding-inline: 50px;
+            padding-block: 20px;
+            font-family: 'fredoka';
+            font-style: normal;
+            font-weight: 600;
+            font-size: 36px;
+            line-height: 100%;
+            font-feature-settings: 'liga' off;
+            color: #FFFFFF;
+            border: 4px solid #000000;
+            box-shadow: 0px 5px 0px #2B323C;
+            border-radius: 24px;
+        }
+        .subject-maths{
+            background: #EC589A;
+        }
+
+        .subject-arts{
+            background: #60BFF9;
+        }
+
+        .subject-science{
+            background: #6F59F6;
+        }
+
+        .subject-history{
+            background: #EB7260;
+        }
+        .hobbies{
+            position: relative;
+             bottom: 40px;
+            left: 51px;
+            display: flex;
+            gap: 30px;
+        }
+        .hobby-img{
+            width: 152px;
+            height: 152px;
+            border-radius: 50%;
+            left: 144px;
+            top: 268px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #FFFFFF;
+            border: 13px solid #2B323C;
+            box-shadow: 0px 6px 0px rgba(0, 0, 0, 0.25);
+        }
+        .hobby-img img{
+            width: 80%;
+            height: 80%;
+            object-fit: contain;
+        }
+        .hobby-text{
+            margin-top: 20px;
+            font-family: 'naughtyMonster';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 38px;
+            line-height: 97.3%;
+            /* identical to box height, or 52px */
+
+            text-align: center;
+            font-feature-settings: 'liga' off;
+
+            color: #FFFFFF;
+        }
+        .page-title-img{
+            height: auto;
+            width: 240px;
+            margin-left: 30px;
+            object-fit: contain;
+        }
+        .heart-img{
+
+            width: 200px;
+        }
+
+        .bus-img{
+            transform: scale(-1,1);
+        }
+        .cloud{
+            object-fit: contain;
+            z-index: 10;
+        }
+         .me-crown{
+                width: 50px;
+                height: 45px;
+                top: -30px;
+                left: 50%;
+                transform: translate(-50%,0);
+            }
+         .content{
+            font-size: 30px;
+         }   
+         @media screen and (max-width: 1100px) {
+            .content{
+                font-size: 20px;
+            }
+         }
+       /* create a media query for max-width: 300 */
+       @media screen and (max-width: 700px) {
+            /* .app,body{
+               display: flex;
+               flex-direction: column;
+               overflow: auto;
+            } */
+            .app{
+                overflow: hidden;
+            }
+            .about-section h1{
+                font-size: 50px;
+                line-height: 60px;
+            }
+            .cloud{
+                width: 170px;
+
+            }
+            .cloud-1{
+                display: none;
+            }
+            .cloud-2{
+                left: -16%;
+                top: 47px;
+            }
+            .section-1{
+                align-items: unset;
+            }
+            .about-section{
+                margin-top: 100px;
+            }
+            .chat-section{
+                width: 150px;
+                background-repeat: no-repeat;
+                height: 100px;
+            }
+            .chat-section h3{
+                                font-size: 15px;
+
+            }
+            .about-content{
+                padding: 24px;
+                padding-top: 34px;
+                gap: 16px;
+            }
+            .sun{
+                width: 200px;
+                height: 200px;
+            }
+            .page-title{
+                font-size: 40px;
+                text-align: left;
+                margin-inline: 0;
+                margin-left: 20px;
+            }
+            
+            .desc{
+              flex-direction: column;
+              justify-content: center;
+              margin: 0;
+              margin-inline: auto;
+
+            }
+            .content{
+                font-size: 16px;
+                order: 2;
+                margin: 0px;
+            }
+            .hobby-page{
+                padding: 0;
+            }
+            .hobbies{
+                width: 80vw;
+                left: 0;
+                margin-inline: auto;
+            }
+            .hobby-img{
+                width: 80px;
+                height: 80px;
+                border-width: 6px;
+            }
+            .hobby-text{
+                font-size: 16px;
+            }
+            .me-crown{
+                width: 40px;
+                height: 30px;
+                top: -20px;
+                left: 50%;
+                transform: translate(-50%,0);
+            }
+            .me-body{
+                height: 200px;
+            }
+            section,.section-4,.section-5,.section-3{
+                padding: 0px;
+                padding: 24px;
+                /* padding-inline: 23px; */
+            }
+            .section-4 .page-title{
+                margin-left: 0;
+            }
+            .page-title-img{
+                    width: 120px;
+            }
+            .subject-section > div{
+                padding-inline: 28px;
+                padding-block: 20px;
+                font-size: 16px;
+                border-radius: 15px;    
+            }
+            .family-photo-section{
+                display: grid;
+                grid-template-columns: repeat(2,auto);
+                grid-auto-rows: 90px;
+                width: fit-content;
+                margin-left: 23px;
+            }
+            .family-photo{
+                display: flex;
+                width: 90px;
+                height: 90px;
+                object-fit: contain;
+            }
+            .family-photo-section > img:nth-child(3){
+                left: 0;
+            }
+            .family-photo-section > img:nth-child(2){
+                left: -20px;
+            }
+
+            .family-photo-section > img:nth-child(4){
+                left: -20px;
+            }
+            .subject-section{
+                left: 0;
+                margin-inline: auto;
+            }
+           
+           
+       }
+        
+        /* br{
+
+            margin-top: 30px;
+        } */
+        
+    </style>
+</head>
+<body>
+    <div class="app">
+
+        <section class="section-1">
+            <img class="cloud-1 cloud-bottom cloud" src="/c1.png" alt="" srcset="">
+            <div class="about-section">
+                <h1>Hi!
+                    <br>
+                    i AM <span class="highlight">SANATANi</span>
+                </h1>
+                <div class="sun">
+                    <img src="/sun.gif" alt="" srcset="">
+                </div>
+            </div>
+        </section>
+        <section class="section-2">
+            <img class="cloud-2 cloud-top-left cloud" src="/c2.png" alt="" srcset="">
+                <img class="cloud-mini cloud-bottom-right cloud" src="/c6.png" alt="" srcset="">
+
+            <h1 class="page-title">
+                ABOUT ME
+            </h1>
+            <div class="about-content desc">
+                <div class="about-content-text content">
+                    <p>Welcome to my diversonal website! 👋</p>
+                    <p>
+                         My name is Harssha, and I am a<br>
+                    12-year-old, 7th Grade student. On<br>
+                    this site, you'll find information<br> about me, my hobbies, and the<br> things I'm passionate about.<br>
+                    </p>
+                    <p>Thanks for visiting!</p>
+                </div>
+                <div class="me">
+                    <img class="me-body" src="./me.png" alt="" srcset="">
+                    <img class="me-crown" src="./corn.gif" alt="" srcset="">
+                </div>
+              
+            </div>
+        </section>
+        <section class="section-3 hobby-page">
+            <img class="cloud cloud-top-right " src="./c3.png" alt="cloud" srcset="">
+            <h1 class="page-title inverted">HOBBIES</h1>
+            <div class="hobby-content content desc">
+                Here on my website, I want to share some of my favorite hobbies with you. I love my hobbies and enjoy spending my free time doing these activities.
+               
+            </div>
+             <div class="hobbies">
+                    <div class="hobby">
+                        <div class="hobby-img">
+                            <img src="./tennis.gif" alt="" srcset="">
+                        </div>
+                        <div class="hobby-text">01. Tennis</div>
+                    </div>
+                    <div class="hobby">
+                        <div class="hobby-img">
+                            <img src="./guitar.gif" alt="" srcset="">
+    
+                        </div>
+                        <div class="hobby-text">02. Guitar</div>
+                    </div>
+                    <div class="hobby">
+                        <div class="hobby-img">
+                            <img src="./joystick.gif" alt="" srcset="">
+    
+                        </div>
+                        <div class="hobby-text">03. Games</div>
+                    </div>
+    
+                </div>
+        </section>
+        <section class="section-4">
+            <img class="cloud cloud-bottom-right " src="./c4.png" alt="cloud" srcset="">
+            <h1 class="page-title title-left inverted">
+                My School
+                <img class="bus-img page-title-img" src="./bus.gif" alt="" srcset="">
+            </h1>
+            <div class="my-school-content content">
+                In this section of my website, I want to share some information about my school and the things I'm involved in. I attend NPS Gottigere and am currently in Grade 7. I have 4 favourite subjects.
+            </div>
+            <div class="subject-section">
+                <div class="subject-arts">Arts</div>
+                <div class="subject-maths">Maths</div>
+                <div class="subject-science">Science</div>
+                <div class="subject-history">History</div>
+            </div>
+            
+        </section>
+        <section class="section-5">
+            <h1 class="page-title title-left inverted">Friends & <br> Family
+                <img class="page-title-img heart-img" src="./heart.gif" alt="" srcset="">
+            </h1>
+             <div class="my-school-content content">
+    I'm lucky to have a great group of friends and a loving family, and I want to share some of their photos and stories with you on this section of my website.       
+         </div>
+         <div class="family-photo-section">
+                <img class="family-photo" src="/family1.png" alt="" srcset="">
+                <img class="family-photo" src="/family2.png" alt="" srcset="">
+                <img class="family-photo" src="/family3.png" alt="" srcset="">
+                <img class="family-photo" src="/family4.png" alt="" srcset="">
+    
+         </div>
+        </section>
+    </div>
+    <div class="welcome-character">
+        <div class="chat-section">
+            <h3 class="callout-text">
+                Welcome to
+                <br>
+                my website
+            </h3>
+        </div>
+        <div class="welcome-character--img">
+            <img src="/welcome_character.png" alt="" srcset="">
+        </div>
+    </div>
+    <script>
+        const calloutContents = [
+            'Welcome <br> my website!',
+            "Here’s a bit <br> about me!",
+            "I like doing these!",
+            "I have many friends!",
+            "I love my family!"
+        ]
+        const wrapper = document.querySelectorAll('.app')
+        const callout = document.querySelector('.callout-text')
+        callout.addEventListener('animationend', () => {
+            console.log("End Aniamotp")
+            callout.classList.remove('fade')
+        })
+        wrapper.forEach((element) => {	element.addEventListener("wheel", function(event){            
+            let children = element.children
+            let visibleChild = 0
+            for(let i = 0; i < children.length; i++) {
+                if(children[i].offsetLeft < element.scrollLeft + element.offsetWidth/2) {
+                    visibleChild = i
+                }
+            }
+            const activeCallout = calloutContents[visibleChild]
+            if(callout.innerHTML !== activeCallout){
+                callout.innerHTML = activeCallout
+                callout.classList.add('fade')
+            }
+            
+          
+				if(event.deltaY > 0) {
+					element.scrollLeft += event.deltaY;
+				} else {
+					element.scrollLeft += event.deltaY;
+				}
+			});
+		})
+
+
+		
+    </script>
+</body>
+</html>
