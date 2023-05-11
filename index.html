@@ -18,12 +18,11 @@
         src: url("./naughtyMonster.ttf");
         }
         body,.app{
+            height: 100%;
+            overflow: auto;
             margin: 0;
-            overflow: hidden;
             font-family: 'naughtyMonster';
             /* flex-direction: row; */
-            display: grid;
-            grid-auto-flow: column ;
 
         }
         section{
@@ -101,7 +100,7 @@
             bottom: 27px;
             width: 479px;
             height: 161px;
-            right: -4%;
+            right: 0;
             filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
         }
         .cloud-top-right{
@@ -109,7 +108,7 @@
             top: 27px;
             width: 479px;
             height: 141px;
-            right: -4%;
+            right: 0;
             filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
         }
         .cloud-1{
@@ -706,32 +705,47 @@
         const wrapper = document.querySelectorAll('.app')
         const callout = document.querySelector('.callout-text')
         callout.addEventListener('animationend', () => {
-            console.log("End Aniamotp")
             callout.classList.remove('fade')
         })
-        wrapper.forEach((element) => {	element.addEventListener("wheel", function(event){            
-            let children = element.children
-            let visibleChild = 0
-            for(let i = 0; i < children.length; i++) {
-                if(children[i].offsetLeft < element.scrollLeft + element.offsetWidth/2) {
-                    visibleChild = i
-                }
-            }
-            const activeCallout = calloutContents[visibleChild]
+        function getVisiblePercentage(element) {
+            const parent = element.parentElement;
+            const parentTop = parent.getBoundingClientRect().top;
+            const parentBottom = parent.getBoundingClientRect().bottom;
+            
+            const elementTop = element.getBoundingClientRect().top;
+            const elementBottom = element.getBoundingClientRect().bottom;
+            
+            const visibleTop = Math.max(elementTop, parentTop);
+            const visibleBottom = Math.min(elementBottom, parentBottom);
+            
+            const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+            const elementHeight = elementBottom - elementTop;
+            
+            return (visibleHeight / elementHeight) * 100;
+          }
+        
+          function getMostVisibleChild(selector) {
+            const children = document.querySelectorAll(selector);
+            const visibilityPercentages = Array.from(children).map(getVisiblePercentage);
+            const maxVisibility = Math.max(...visibilityPercentages);
+            const mostVisibleIndex = visibilityPercentages.indexOf(maxVisibility);
+            return mostVisibleIndex;
+          }
+        
+          const parent = document.querySelector('.app');
+          parent.addEventListener('scroll', function() {
+            updateCallout()
+          });
+          function updateCallout(){
+            const mostVisibleChild = getMostVisibleChild('.app section');
+            const activeCallout = calloutContents[mostVisibleChild]
             if(callout.innerHTML !== activeCallout){
                 callout.innerHTML = activeCallout
                 callout.classList.add('fade')
             }
-            
-          
-				if(event.deltaY > 0) {
-					element.scrollLeft += event.deltaY;
-				} else {
-					element.scrollLeft += event.deltaY;
-				}
-			});
-		})
-
+          }
+        updateCallout()
+     
 
 		
     </script>
